@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-size: 2.5em;
+            color: #333;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 2s ease-out, transform 2s ease-out;
+        }
+
+        .welcome-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            flex-direction: column;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            margin-top: 5px;
+        }
+
+        .menu-option {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .menu-option:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="welcome-text" id="welcome-text">እንኳን ደህና መጡ</h1>
+    </div>
+    <div class="menu-container">
+        <div class="menu-icon" id="menu-icon">&#8942;</div>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <div class="menu-option" onclick="changeLanguage('am')">Amharic</div>
+            <div class="menu-option" onclick="changeLanguage('en')">English</div>
+            <div class="menu-option" onclick="changeLanguage('ar')">Arabic</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.getElementById('welcome-text').classList.add('show');
+            }, 500);
+            
+            const menuIcon = document.getElementById('menu-icon');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            
+            menuIcon.addEventListener('click', function() {
+                dropdownMenu.style.display = dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '' ? 'flex' : 'none';
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!menuIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+
+        function changeLanguage(lang) {
+            const welcomeText = document.getElementById('welcome-text');
+            
+            if (lang === 'am') {
+                welcomeText.innerText = 'እንኳን ደህና መጡ';
+            } else if (lang === 'en') {
+                welcomeText.innerText = 'Welcome';
+            } else if (lang === 'ar') {
+                welcomeText.innerText = 'أهلاً وسهلاً';
+            }
+            
+            document.getElementById('dropdown-menu').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

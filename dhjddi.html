@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VD COIN</title>
+ <style>
+ body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(144, 54, 255);
+    height: 100%;
+    width: 100%;
+    color: #fff;
+}
+
+.welcome-section, .signin-section, .game-section, .Account, .hidden {
+    display: none;
+}
+
+.welcome-section, .game-section, .Account {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#signin-form, #returning-user {
+    display: block;
+}
+
+.animate-text {
+    animation: text-animation 3s infinite;
+}
+
+@keyframes text-animation {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: green; }
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(45deg, #ff6347, #ffa07a);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.logo-text {
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    letter-spacing: 2px;
+    margin-bottom: -10px;
+}
+
+.logo-subtext {
+    font-size: 24px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 8px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.display-box {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+.header-2 {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f0f0f0;
+    width: 100%;
+}
+
+.grade {
+    background-color: #4bff80;
+    color: red;
+    border-radius: 30px;
+    margin: 20px;
+    height: 60px;
+    width: 160px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    text-align: center;
+}
+
+.section {
+    margin: 20px 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.purchase-item {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.purchase-item p {
+    font-size: 18px;
+}
+
+.purchase-item button {
+    background-color: #ff7f50;
+}
+
+.purchase-item button:hover {
+    background-color: #ff4500;
+}
+ 
+ </style>
+</head>
+<body>
+    <div id="welcome-new" class="welcome-section">
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-text">VD</span>
+                <span class="logo-subtext">COIN</span>
+            </div>
+        </div>
+        <p class="king">👑🦁</p>
+        <h1>Welcome to VD COIN</h1>
+        <button id="signin-btn">Sign In</button>
+        <p class="Diamond">💎🪙</p>
+    </div>
+
+    <div id="signin-form" class="signin-section">
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-text">VD</span>
+                <span class="logo-subtext">COIN</span>
+            </div>
+        </div>
+        <h2>Sign in</h2>
+        <label>
+            <input type="checkbox" id="file-access-checkbox"> Allow this site to access your files
+        </label>
+        <div>
+            <input type="text" id="username-input" placeholder="USER NAME">
+        </div>
+        <div>
+            <input type="password" id="password-input" placeholder="PASSWORD">
+        </div>
+        <button id="finish-btn" disabled>FINISH</button>
+    </div>
+
+    <div id="returning-user" class="welcome-section">
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-text">VD</span>
+                <span class="logo-subtext">COIN</span>
+            </div>
+        </div>
+        <p class="king"><span class="A">👑</span><span class="B">🦁</span></p>
+        <h1>Welcome back <span id="username-display"></span></h1>
+        <input type="password" id="returning-password-input" placeholder="PASSWORD">
+        <button id="eye-btn">👁️</button>
+        <button id="verify-btn" class="welcomebutton">Verify</button>
+        <button id="continue-btn" disabled class="welcomebutton">Continue</button>
+        <p class="Diamond"><span class="c">💎 </span><span class="D">🪙</span></p>
+    </div>
+
+    <div id="game-section" class="game-section">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <span class="logo-text">VD</span>
+                    <span class="logo-subtext">COIN</span>
+                </div>
+            </div>
+            <h1 class="animate-text">VD COIN</h1>
+            <div class="header-2">
+                <div class="Header-buttons">
+                    <button id="myAccountButton">My Account</button>
+                    <button id="tips-btn">Tips</button>
+                    <button id="gameButton">Game</button>
+                    <button class="large-button" id="more-tips-btn">VD MARKET</button>
+                </div>
+                <div class="grade">
+                    EYU Coins 💷: <span id="coin-grade">0</span>
+                </div>
+                <div class="grade">
+                    Earn Coins 💶: <span id="coin-display">0</span>
+                </div>
+                <div class="grade" id="market-currency">DD COIN 💵: 0</div>
+                <div class="grade" id="profit-per-minute">Profit/min 💫: 0</div>
+            </div>
+        </header>
+
+        <div id="main-game">
+            <p>VDS TO GET EARN COIN💶</p>
+            <button class="Increase" id="add-coins-btn">👑</button>
+        </div>
+    </div>
+
+    <div id="myAccount-section" class="Account">
+        <div id="content"></div>
+        <button id="withdrawButton" class="hidden">Withdraw money</button>
+        <button id="reset-data-btn" class="hidden">Reset Data</button>
+    </div>
+
+    <div id="tips-section" class="hidden">
+        <h2>Vds to get more EYU COIN 💷</h2>
+        <button id="get-text-btn">Get Text</button>
+        <div class="section">
+            <h2>YouTube</h2>
+            <h3>Get 50,000 coins</h3>
+            <p>To get the text, go to our YouTube channel and view the videos...</p>
+            <button><a href="https://www.youtube.com/@VDCOIN-9325" target="_blank">GO TO OUR YOUTUBE CHANNEL</a></button>
+            <input type="text" id="youtube-input" placeholder="Enter YouTube text">
+            <button id="claim-youtube-btn">Claim</button>
+            <div>Counter: <span id="youtube-counter-display" class="counter">0</span></div>
+        </div>
+        <div class="section">
+            <h2>Telegram</h2>
+            <h3>Get 20,000 coins</h3>
+            <p>To get the text, go to our Telegram channel and view the Videos...</p>
+            <button><a href="https://t.me/VDCOIN3633" target="_blank">GO TO OUR Telegram CHANNEL</a></button>
+            <input type="text" id="telegram-input" placeholder="Enter Telegram text">
+            <button id="claim-telegram-btn">Claim</button>
+            <div>Counter: <span id="telegram-counter-display" class="counter">0</span></div>
+        </div>
+        <div class="section">
+            <h2>Instagram</h2>
+            <h3>Get 30,000 coins</h3>
+            <p>To get the text, go to our Instagram channel and view the posts...</p>
+            <button><a href="https://www.instagram.com/vdcoin9325" target="_blank">GO TO OUR INSTAGRAM CHANNEL</a></button>
+            <input type="text" id="instagram-input" placeholder="Enter Instagram text">
+            <button id="claim-instagram-btn">Claim</button>
+            <div>Counter: <span id="instagram-counter-display" class="counter">0</span></div>
+        </div>
+        <div class="section">
+            <h2>TikTok</h2>
+            <h3>Get 50,000 coins</h3>
+            <p>To get the text, go to our TikTok channel and view the videos...</p>
+            <button><a href="https://www.tiktok.com/@vdcoin" target="_blank">GO TO OUR TikTok CHANNEL</a></button>
+            <input type="text" id="tiktok-input" placeholder="Enter TikTok text">
+            <button id="claim-tiktok-btn">Claim</button>
+            <div>Counter: <span id="tiktok-counter-display" class="counter">0</span></div>
+        </div>
+        <div class="section">
+            <h2>Facebook</h2>
+            <h3>Get 20,000 coins</h3>
+            <p>To get the text, go to our Facebook channel and view the Videos...</p>
+            <button><a href="https://www.facebook.com/VDCOIN" target="_blank">GO TO OUR Facebook Page</a></button>
+            <input type="text" id="facebook-input" placeholder="Enter Facebook text">
+            <button id="claim-facebook-btn">Claim</button>
+            <div>Counter: <span id="facebook-counter-display" class="counter">0</span></div>
+        </div>
+    </div>
+
+    <div id="buy-buttons" class="hidden">
+        <div class="purchase-item">
+            <p class="Title">COFFEE (EARN-COIN TO DD-COIN )</p>
+            <p>If you buy the coffee by 500000 EARN-COIN...</p>
+            <p>☕</p>
+            <button class="buy-button" id="buy-coffee">BUY THE COFFEE</button>
+        </div>
+        <div class="purchase-item">
+            <p class="Title">BURGER (EARN-COIN TO DD-COIN )</p>
+            <p>If you buy the burger by 1000000 EARN-COIN...</p>
+            <p>🍔</p>
+            <button class="buy-button" id="buy-burger">BUY THE BURGER</button>
+        </div>
+        <!-- Add more purchase items similarly -->
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const signInBtn = document.getElementById("signin-btn");
+    const finishBtn = document.getElementById("finish-btn");
+    const eyeBtn = document.getElementById("eye-btn");
+    const verifyBtn = document.getElementById("verify-btn");
+    const continueBtn = document.getElementById("continue-btn");
+    const fileAccessCheckbox = document.getElementById("file-access-checkbox");
+    const usernameInput = document.getElementById("username-input");
+    const passwordInput = document.getElementById("password-input");
+    const returningPasswordInput = document.getElementById("returning-password-input");
+    const usernameDisplay = document.getElementById("username-display");
+
+    const welcomeNew = document.getElementById("welcome-new");
+    const signinForm = document.getElementById("signin-form");
+    const returningUser = document.getElementById("returning-user");
+    const gameSection = document.getElementById("game-section");
+    const mainGame = document.getElementById("main-game");
+
+    signInBtn.addEventListener("click", function() {
+        welcomeNew.style.display = "none";
+        signinForm.style.display = "block";
+    });
+
+    fileAccessCheckbox.addEventListener("change", function() {
+        finishBtn.disabled = !fileAccessCheckbox.checked;
+    });
+
+    finishBtn.addEventListener("click", function() {
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        if (username && password) {
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password);
+            showModal("YOU ARE SUCCESSFULLY SIGNED IN!!!!!!!!");
+            location.reload();
+        }
+    });
+
+    eyeBtn.addEventListener("click", function() {
+        if (returningPasswordInput.type === "password") {
+            returningPasswordInput.type = "text";
+        } else {
+            returningPasswordInput.type = "password";
+        }
+    });
+
+    verifyBtn.addEventListener("click", function() {
+        if (returningPasswordInput.value === localStorage.getItem("password")) {
+            continueBtn.disabled = false;
+        } else {
+            showModal("Incorrect password");
+        }
+    });
+
+    continueBtn.addEventListener("click", function() {
+        returningUser.style.display = "none";
+        gameSection.style.display = "block";
+        updateGameStats();
+    });
+
+    function updateGameStats() {
+        const coins = parseInt(localStorage.getItem("total-coins")) || 10000;
+        document.getElementById("total-coins").textContent = coins;
+        updateRank(coins);
+    }
+
+    function updateRank(coinDisplay) {
+        let rankText = "";
+        if (coinDisplay > 1000000000) rankText = "King Of VD 👑";
+        else if (coinDisplay > 500000000) rankText = "Diamond Master 💎";
+        else if (coinDisplay > 150000000) rankText = "Platinum Master 🎉";
+        else if (coinDisplay > 50000000) rankText = "Golden Master 🪝";
+        else if (coinDisplay > 10000000) rankText = "Silver Master 💍";
+        else if (coinDisplay > 1000000) rankText = "Bronze Master 💴";
+        else if (coinDisplay > 100000) rankText = "Intermediate 💫";
+        else rankText = "Beginner 🎩";
+        document.getElementById("rank").textContent = rankText;
+        localStorage.setItem("total-coins", coinDisplay);
+    }
+
+    const addCoinsBtn = document.getElementById("add-coins-btn");
+    addCoinsBtn.addEventListener("click", () => {
+        let totalCoins = parseInt(localStorage.getItem("total-coins")) || 10000;
+        totalCoins += 5;
+        document.getElementById("total-coins").textContent = totalCoins;
+        updateRank(totalCoins);
+    });
+
+    const showModal = (message) => {
+        const modal = document.getElementById("myModal");
+        const modalMessage = document.getElementById("modal-message");
+        const closeModal = document.getElementsByClassName("close")[0];
+
+        modalMessage.innerText = message;
+        modal.style.display = "block";
+
+        closeModal.onclick = () => {
+            modal.style.display = "none";
+        };
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    };
+
+    const handlePurchase = (button, cost, marketIncrease, profitIncrease, message) => {
+        let coins = parseFloat(localStorage.getItem("coins")) || 0;
+        let marketCurrency = parseFloat(localStorage.getItem("marketCurrency")) || 0;
+        let profitPerMinute = parseFloat(localStorage.getItem("profitPerMinute")) || 0;
+
+        if (coins >= cost) {
+            coins -= cost;
+            marketCurrency += marketIncrease;
+            profitPerMinute += profitIncrease;
+            showModal(message);
+            updateDisplays();
+            button.style.display = "none";
+            startTimer(button.id);
+        } else {
+           showModal("INSUFFICIENT COINS");
+        }
+    };
+
+    const startTimer = (buttonId, endTime) => {
+        const timerDisplay = document.createElement("div");
+        timerDisplay.className = "timer";
+        const button = timerElements[buttonId];
+        button.parentNode.insertBefore(timerDisplay, button);
+
+        const updateTimer = () => {
+            const timeLeft = endTime - Date.now();
+            if (timeLeft > 0) {
+                const minutes = Math.floor(timeLeft / 1000 / 60);
+                const seconds = Math.floor((timeLeft / 1000) % 60);
+                timerDisplay.innerText = `Available in ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            } else {
+                clearInterval(timerInterval);
+                timerDisplay.remove();
+                button.style.display = "block";
+                localStorage.removeItem(buttonId + "EndTime");
+            }
+        };
+
+        updateTimer();
+        const timerInterval = setInterval(updateTimer, 1000);
+    };
+
+    const checkTimers = () => {
+        Object.keys(timerElements).forEach(buttonId => {
+            const endTime = parseInt(localStorage.getItem(buttonId + "EndTime"));
+            if (endTime && endTime > Date.now()) {
+                const button = timerElements[buttonId];
+                button.style.display = "none";
+                startTimer(buttonId, endTime);
+            }
+        });
+    };
+
+    const updateDisplays = () => {
+        const coinsDisplay = document.getElementById("coin-display");
+        const marketCurrencyDisplay = document.getElementById("market-currency");
+        const profitPerMinuteDisplay = document.getElementById("profit-per-minute");
+
+        coinsDisplay.innerText = coins.toFixed(1);
+        marketCurrencyDisplay.innerText = `DD-COIN💵: ${marketCurrency.toFixed(1)}`;
+        profitPerMinuteDisplay.innerText = `Profit/min: ${profitPerMinute.toFixed(1)}`;
+
+        localStorage.setItem("coins", coins.toFixed(1));
+        localStorage.setItem("marketCurrency", marketCurrency.toFixed(1));
+        localStorage.setItem("profitPerMinute", profitPerMinute.toFixed(1));
+    };
+
+    const addCoinsBtn = document.getElementById("add-coins-btn");
+    addCoinsBtn.addEventListener("click", () => {
+        coins += 10;
+        updateDisplays();
+    });
+
+    const moreTipsBtn = document.getElementById("more-tips-btn");
+    moreTipsBtn.addEventListener("click", () => {
+        document.getElementById("buy-buttons").style.display = "block";
+        document.getElementById("main-game").style.display = "none";
+        document.getElementById("tips-section").style.display = "none";
+        document.getElementById("myAccount-section").style.display = "none";
+    });
+
+    const buyCoffeeBtn = document.getElementById("buy-coffee");
+    const buyBurgerBtn = document.getElementById("buy-burger");
+    const buyRingBtn = document.getElementById("buy-ring");
+    const buyKingBtn = document.getElementById("buy-king");
+    const buyBicycleBtn = document.getElementById("buy-bicycle");
+    const buyMotorBtn = document.getElementById("buy-motor");
+    const buyHelicopterBtn = document.getElementById("buy-helicopter");
+    const buyRocketBtn = document.getElementById("buy-rocket");
+
+    buyCoffeeBtn.addEventListener("click", () => handlePurchase(buyCoffeeBtn, 500000, 5000, 65, "YOU SUCCESSFULLY BOUGHT THE COFFEE ☕!!!!!"));
+    buyBurgerBtn.addEventListener("click", () => handlePurchase(buyBurgerBtn, 1000000, 13000, 110, "YOU SUCCESSFULLY BOUGHT THE BURGER 🍔!!!!!"));
+    buyRingBtn.addEventListener("click", () => handlePurchase(buyRingBtn, 1500000, 15000, 250, "YOU SUCCESSFULLY BOUGHT THE RING 🎁!!!!!"));
+    buyKingBtn.addEventListener("click", () => handlePurchase(buyKingBtn, 3000000, 10000, 600, "YOU SUCCESSFULLY BOUGHT THE KING 👑!!!!!"));
+    buyBicycleBtn.addEventListener("click", () => handlePurchase(buyBicycleBtn, 5000000, 20000, 750, "YOU SUCCESSFULLY BOUGHT THE BICYCLE 🚲!!!!!"));
+    buyMotorBtn.addEventListener("click", () => handlePurchase(buyMotorBtn, 20000000, 450000, 0, "YOU SUCCESSFULLY BOUGHT THE MOTORCYCLE 🏍️!!!!!"));
+    buyHelicopterBtn.addEventListener("click", () => handlePurchase(buyHelicopterBtn, 30000000, 600000, 0, "YOU SUCCESSFULLY BOUGHT THE HELICOPTER 🚁!!!!!"));
+    buyRocketBtn.addEventListener("click", () => handlePurchase(buyRocketBtn, 1000000000, 10000000, 0, "YOU SUCCESSFULLY BOUGHT THE ROCKET 🚀!!!!!"));
+
+    const timerElements = {
+        "buy-coffee": buyCoffeeBtn,
+        "buy-burger": buyBurgerBtn,
+        "buy-ring": buyRingBtn,
+        "buy-king": buyKingBtn,
+        "buy-bicycle": buyBicycleBtn,
+        "buy-motor": buyMotorBtn,
+        "buy-helicopter": buyHelicopterBtn,
+        "buy-rocket": buyRocketBtn
+    };
+
+    setInterval(() => {
+        marketCurrency += profitPerMinute / 60;
+        updateDisplays();
+    }, 1000);
+
+    // Initial display update and check timers
+    updateDisplays();
+    checkTimers();
+});     
+    
+    
+    </script>
+</body>
+</html>

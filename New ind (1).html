@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VD COIN</title>
+ <style>
+ 
+ body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color:rgb(144,54,255);
+    height:100%;
+    width:100%;
+    
+}
+.section {
+            margin: 20px 0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }        
+.welcome-section, .signin-section, .game-section {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#welcome-new, #returning-user {
+    display: block;
+}
+
+.animate-text {
+    animation: text-animation 3s infinite;
+}
+
+@keyframes text-animation {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: green; }
+}
+.block{
+    display:block;
+}
+.display-box {
+    width: 90px;
+    height: 60px;
+    border: 1px solid #000;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+}
+.Title{
+    margin-left:30%;
+    margin-right:30%;
+    margin-bottom:10px;
+    color:red;
+}
+    .Increase{
+        height:250px;
+        width:250px;
+        border-radius:50%;
+      margin-top:50px;
+         display:relative;
+        font-size:120px;
+        background-color: #007bff; /* Example background color */
+        color: white;
+        transition: width 0.3s, height 0.3s;
+        margin-bottom:30px;
+    }
+    .Increase:active{
+        
+        border-radius:60%;
+        
+        font-size:120px;
+        background-color:#38f88e; /* Darker blue on press */
+    }
+logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(45deg, #ff6347, #ffa07a);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+
+
+.logo-text {
+    font-size: 48px;
+    font-weight:bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    letter-spacing: 2px;
+    margin-bottom: -10px;
+}
+.hidden {
+    display:none;
+    }
+.logo-subtext {
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1px;
+}
+
+.header-2 {
+    display: fixed;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f0f0f0;
+    width:420px;
+}
+.Fi{
+    display:none;
+}
+.Account:header {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom:8px;
+    
+}
+.welcomebutton{
+    margin:30px;
+}
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+.Header-buttons{
+    display:block;
+}
+.Account {
+    display:none;
+}
+.Account:button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.contents {
+    padding: 20px;
+    text-align: center;
+}
+.A{
+    margin-left:0;
+    margin-right:20px;
+}
+
+.display-box {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+.passwordInput {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.king{
+    font-size:100px;
+    margin-bottom:20px;
+    
+}
+.Diamond{
+    font-size:100px;
+    margin-Top:20px;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#hero {
+    background: url('hero-image.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.qwertyui{
+    height:30px;
+    width:280px;
+}
+.hero-content h1 {
+    font-size: 3em;
+}
+.grade{
+    background-color:#4bff80;
+    color:red;
+    border-radius:30px;
+    margin:20px;
+    height:60px;
+    width:160px;
+    display:inline-block;
+    vertical-align:top;
+    font-size:20px;
+    text-align:center;
+}
+.hero-content p {
+    font-size: 1.5em;
+}
+.sesesss{
+    font-size:60px;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff7f50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #ff4500;
+}
+
+main section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    margin: 0 auto;
+}
+.qaqaqaqaa{
+    height:40px;
+    width:320px;
+    border-radius:12px;
+}
+
+form input, form textarea, form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+.xsxsxsxzxzxxx{
+    height:60px;
+    width:150px;
+    margin-Top:30px;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+ </style>
+</head>
+<body>
+    <div id="welcome-new" class="welcome-section">
+    <div class="logo-container">
+        <div class="logo">
+            <span class="logo-text">VD</span>
+            <span class="logo-subtext">COIN</span>
+        </div>
+    </div>
+        <p class="king">👑🦁</p>
+        <h1>Welcome to VD COIN</h1>
+        <button id="signin-btn">Sign In</button>
+        <p class="Diamond">💎🪙</p>
+    </div>
+
+    <div id="signin-form" class="signin-section">
+    <div class="logo-container">
+        <div class="logo">
+            <span class="logo-text">VD</span>
+            <span class="logo-subtext">COIN</span>
+        </div>
+    </div>
+        <h2>Sign in</h2>
+        <label>
+            <input class="sesesss" type="checkbox" id="file-access-checkbox"> Allow this site to access your files
+        </label>
+        <div>
+            <input class="qaqaqaqaa" type="text" id="username-input" placeholder="USER NAME">
+        </div>
+        <div>
+            <input class="qaqaqaqaa" type="password" id="password-input" placeholder="PASSWORD">
+        </div>
+        <button class="xsxsxsxzxzxxx"id="finish-btn" disabled>FINISH</button>
+        
+   <p class="king"><span class="A"></span>         <span class="B">🦁</span></p>     
+        <div  id="About-us">
+
+<nav>
+            <div class="logo">VD-COIN</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li></li>
+            </ul>
+           
+        </nav>
+    </header>
+    <main>
+        <div id="content-about">
+            <!-- Initial content -->
+                        <section id="about">
+                <h2>About VD COIN </h2>
+                <p>VD-COIN is a fun and interactive way to earn rewards by entering texts from YouTube, Telegram, and Instagram channels. Enjoy your time and rack up those coins!.Vd coin is the first By contains another 3 coins.
+      <p style="color:white;
+        font-weight:bold;">EYU-COIN: THE MOST Expensive AND VALUABLE COIN WHICH IS 15$-50$.</p>
+      <p style="color:white;
+        font-weight:bold;" >DD-COIN: THE  Expensive AND VALUABLE COIN WHICH IS 1$-5$.</p>
+        <p style="color:white;
+        font-weight:bold;" >EARN-COIN: THE LEAST
+         Expensive AND VALUABLE COIN WHICH IS 0.1$-0.75$.</p>        
+      <p>You can communicate us through 
+      <a href="mailto:johndear9325@gmail.com" target="blank">Our Email</a>
+      </p>
+            </section>
+            <section id="features">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>Interactive Gameplay</h3>
+                        <p>Engage with your favorite content and earn coins effortlessly.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Random Text Challenges</h3>
+                        <p>Receive new text challenges every few hours for a fresh experience.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Secure Rewards</h3>
+                        <p>Our system ensures your coins and rewards are secure and fairly distributed.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="how-it-works">
+                <h2>How It Works</h2>
+                <p>Simply follow these steps:</p>
+                <ol>
+                    <li>Visit our YouTube, Telegram,  Instagram channel,Tiktok and Facebook.</li>
+                    <li>Find the text on the video or other Message we post and enter it on the game page.</li>
+                    <li>Earn coins and enjoy exclusive rewards!</li>
+                </ol>
+            </section>
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or need support, feel free to reach out!</p>
+                <form id="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>        </div>
+    </main>
+    
+</div>
+
+    </div>
+
+    <div id="returning-user" class="welcome-section">
+    <div class="logo-container">
+        <div class="logo">
+            <span class="logo-text">VD</span>
+            <span class="logo-subtext">COIN</span>
+        </div>
+    </div>
+    <p class="king"><span class="A">👑</span>         <span class="B">🦁</span></p>
+        <h1>Welcome back <span id="username-display"></span></h1>
+        <input class="qwertyui" type="password" id="returning-password-input" placeholder="PASSWORD">
+        <button id="eye-btn">👁️</button>
+        <button id="verify-btn" class="welcomebutton">Verify</button>
+        <button id="continue-btn" disabled class="welcomebutton">Continue</button>
+        <p class="Diamond"><span class="c">💎 </span>      <span class="D">🪙</span></p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div id="game-section" class="game-section">
+        <header>
+            <div class="logo-container">
+        <div class="logo">
+            <span class="logo-text">VD</span>
+            <span class="logo-subtext">COIN</span>
+        </div>
+    </div>
+            <h1 class="animate-text">VD COIN</h1>
+      <div class="header-2" >
+     <div class="Header-buttons" > <button id="myAccountButton">My Account</button>
+        <button id="tips-btn">Tips</button>
+        <button  id="gameButton">Game</button> 
+        <button class="large-button" id="more-tips-btn">VD MARKET</button> 
+        </div>
+        <div class="grade">
+        EYU Coins 💷: <span id="coin-grade">0</span>
+    </div>
+              <div class="grade">
+        Earn  Coins 💶: <span id="coin-display">0</span>
+    </div>
+ <div  style="font-size:25px;"class="grade" id="market-currency">DD COIN 💵: 0</div>           
+            
+                 
+<div class="grade" id="profit-per-minute">Profit/min 💫: 0</div> 
+         
+         </div>
+  </header>          
+   </div>
+ 
+ 
+ 
+              
+ <div class="Account" id="myAccount-section">
+        <div id="content">
+         
+         
+  </div>
+    
+  
+      
+    
+    <button id="withdrawButton" class="hidden" >Withdraw money</button>
+    <button style="margin-top:15px;" class="hidden"id="reset-data-btn">Reset Data</button>
+     </div>
+  <div id="passwordInputAc" class="hidden">
+        <input type="password" id="password" placeholder="Enter your password">
+        <button id="checkPassword">Check</button>
+    </div>    
+    
+       
+        <div style="border-width:2px;
+             border-style:solid;
+             border-color:red;
+             
+             display:flex;" id="main-game" >
+    <p>VDS TO GET EARN COIN💶</p>         
+               <button  class="Increase" id="add-coins-btn">👑</button>
+     
+   </div>
+  
+
+    
+
+ <div id="passwordInputAc" class="hidden">
+        <input type="password" id="password" placeholder="Enter your password">
+        <button id="checkPassword">Check</button>
+    </div>       
+        
+
+  
+  
+  
+    <div id="tips-section" class="hidden">
+    
+        <h2>Vds to get more  EYU COIN 💷 </h2>
+   <button id="get-text-btn">Get Text</button>         
+        
+        <div class="section">
+        <h2>YouTube</h2>
+        <h3>Get 50,000 coins</h3>
+            <p>To get the text, go to our YouTube channel and view the videos. But when you go to youtube you must first subscribe and like all videos unless in the time of Withdrawal of money your coins from YouTube claim willbe disqualified.You can get the correct text in 2 hours duration.</p>
+            <button> <a href="https://www.youtube.com/@VDCOIN-9325"  target="_blank">GO TO OUR YOUTUBE CHANNEL</a>   </button>
+            
+        <input type="text" id="youtube-input" placeholder="Enter YouTube text">
+        <button id="claim-youtube-btn">Claim</button>
+        <div>Counter: <span id="youtube-counter-display" class="counter">0</span></div>
+    </div>
+
+    <div class="section">
+        <h2>Telegram</h2>
+        <h3>Get 20,000 coins</h3>
+            <p>To get the text, go to our Telegram channel and view the Videos. You can get the correct text in 6 hours duration.</p>
+         <button> <a href="https://t.me/VDCOIN3633"  target="_blank">GO TO OUR Telegram CHANNEL</a>   </button>
+        <input type="text" id="telegram-input" placeholder="Enter Telegram text">
+        <button id="claim-telegram-btn">Claim</button>
+        <div>Counter: <span id="telegram-counter-display" class="counter">0</span></div>
+    </div>
+
+    <div class="section">
+        <h2>Instagram</h2>
+        <h3>Get 30,000 coins</h3>
+            <p>To get the text, go to our Instagram channel and view the posts.But First you must follow our Instagram channel unless in the time of withdrawal of money ypur coins from Instagram will be disqualified .You can get the correct text in 6 hours duration.</p>
+            <button> <a href="https://www.instagram.com/vdcoin9325?igsh=bmprdHowc3dkdWM0"  target="_blank">GO TO OUR INSTAGRAM CHANNEL</a>   </button>
+        <input type="text" id="instagram-input" placeholder="Enter Instagram text">
+        <button id="claim-instagram-btn">Claim</button>
+        <div>Counter: <span id="instagram-counter-display" class="counter">0</span></div>
+    </div>
+
+    <div class="section">
+        <h2>TikTok</h2>
+        <h3>Get 50,000 coins</h3>
+            <p>To get the text, go to our TikTok channel and view the videos and get the text and insert it.But remember you must follow our TikTok channel first , unless your coin from TikTok will be disqualifiedin the time of withdrawal of money.You can get  the correct text in 6 hours duration.</p>
+            <button> <a href="https://www.tiktok.com/@vdcoin?_t=8nvjUikwrAr&_r=1"  target="_blank">GO TO OUR TikTok CHANNEL</a>   </button>
+        <input type="text" id="tiktok-input" placeholder="Enter TikTok text">
+        <button id="claim-tiktok-btn">Claim</button>
+        <div>Counter: <span id="tiktok-counter-display" class="counter">0</span></div>
+    </div>
+
+    <div class="section">
+        <h2>Facebook</h2>
+        <h3>Get 20,000 coins</h3>
+            <p>To get the text, go to our Facebook channel and view the Videos.But first you must follow our Facebook page unless your coin from Facebook claim will be disqualified in the time of withdrawal of money. You can get the correct text in 6 hours duration.</p>
+         <button> <a href="https://www.facebook.com/profile.php?id=61562121251407&mibextid=ZbWKwL"  target="_blank">GO TO OUR  Facebook Page</a>   </button>
+               
+        <input type="text" id="facebook-input" placeholder="Enter Facebook text">
+        <button id="claim-facebook-btn">Claim</button>
+        <div>Counter: <span id="facebook-counter-display" class="counter">0</span></div>
+    </div>
+
+    <div class="password-section hidden" id="password-section">
+        <h3>Enter Password to Reveal Texts</h3>
+        <input type="password" id="password-input-new" placeholder="Enter password">
+        <button id="submit-password-btn">Submit</button>
+        <div id="revealed-text"></div>
+    </div>
+
+  <button id="reset-btn">Reset</button>  
+  </div>
+    
+    <div id="buy-buttons" class="hidden">
+    
+    <p class="Title">COFFEE (EARN-COIN TO DD-COIN )</p>
+        
+            
+            <p>If you buy the coffee by 500000 EARN-COIN and Your DD-COIN will increase by 5000 and your profit per minute will be increased by 65.</p>  
+  <p style="font-size: 150px;">☕</p>
+    
+        <button class="buy-button" id="buy-coffee">BUY THE COFFEE</button>
+        <p class="Title">BURGER(EARN-COIN TO DD-COIN )</p>
+    
+            <p>If you buy the coffee by 1000000 EARN-COIN and Your DD-COIN will increase by 13000 and your profit per minute will be increased by 110.</p>  
+        
+        
+        <p style="font-size: 150px;">🍔</p>
+        
+        
+        <button class="buy-button" id="buy-burger">BUY THE BURGER</button>
+     <p class="Title">RING (EARN-COIN TO DD-COIN )</p>
+            <p>If you buy the coffee by 1500000 EARN-COIN and Your DD-COIN will increase by 15000 and your profit per minute will be increased by 250.</p>       
+        
+        
+               
+ <p style="font-size: 150px;">💍</p>
+        
+        <button class="buy-button" id="buy-ring">BUY THE RING</button>
+      
+     <p class="Title">KING (EARN-COIN TO DD-COIN )</p>
+           <p>If you buy the coffee by 3000000 EARN-COIN and Your DD-COIN will increase by 10000 and your profit per minute will be increased by 550.</p>   
+     <p style="font-size: 150px;">👑</p>     
+        <button class="buy-button" id="buy-king">BUY THE KING</button>
+                
+   <p class="Title">BICYCLE (EARN-COIN TO DD-COIN )</p>              
+           
+            <p>If you buy the BICYCLE by 50000000 EARN-COIN and Your DD-COIN will increase by 20000 and your profit per minute will be increased by 750.</p>  
+           <p style="font-size: 150px;">🚲</p>
+        <button class="buy-button" id="buy-bicycle">BUY THE BICYCLE</button> 
+         <p class="Title">MOTORCYCLE ( EARN-COIN TO DD-COIN )</p>
+ <p>If you buy the MOTORCYCLE by 20,000,000 EARN-COIN and Your DD-COIN will increase by 450,000 .</p>
+     
+    <p style="font-size: 150px;">🏍️</p>
+        <button class="buy-button" id="buy-motor">BUY THE MOTORCYCLE</button>    
+  <p class="Title" >HELICOPTER( EARN-COIN TO DD-COIN )</p>
+     <p>If you buy the HELICOPTER by 30,000,000 EARN-COIN-COIN and Your DD-COIN will increase by 600,000.</p>   
+         
+    <p style="font-size: 150px;">🚁</p>
+        <button class="buy-button" id="buy-helicopter">BUY THE HELICOPTER</button>  
+        <p class="Title">ROCKET ( EARN-COIN TO DD-COIN )</p>
+       <p>If you buy the ROCKET by 1,000,000,000 Earn-COIN and Your DD-COIN will increase by 10,000,000.</p>  
+       
+    <p style="font-size: 150px;">🚀</p> 
+        <button class="buy-button" id="buy-rocket">BUY THE ROCKET
+        </button>    
+<p class="Title"> PREMIUM TIP</p>
+<p> If you do the following things you will get-</p>
+    <p>✓ 1,000,000,000 EARN-COIN😱😱😱</p>
+    <p>✓ 500,000,000 DD-COIN😱😱😱</p>
+    <p>✓ 100,000,000 EYU-COIN😱😱😱</p>
+    <p>✓ 100,000 $$$$ 😱😱😱</p>
+    
+    
+
+ <p class="Title">IN YOUTUBE </p>
+ <p>1.SUBSCRIBE ALL OUR 10 YOUTUBE CHANNELS ,THE FIRST ONE IS IN THE TIPS SECTION AND YOU FOUND THE OTHER ON OUR VIDEOS.</p>
+<p>2.HAVING AT LEAST 1000 VIEWS ON EACH EACH YOUTUBE CHANNELS.</p>
+ <p class="Title" >IN TELEGRAM </p>
+   <p>1.JOIN OUR ALL 10 TELEGRAM CHANNELS.</p>    
+   <p>2. ADD AT LEAST 200 SUBSCRIBERS IN EACH CHANNELS.</p>          
+  <p class="Title" >IN INSTAGRAM </p>
+   <p>1.FOLLOW OUR ALL 10 CHANNELS.</p>    
+   <p>2. ADD AT LEAST 200 FOLLOWERS (AFTER THEY FOLLOW WRITE THERE NAME AND S ND TO ONE OF THE TELEGRAM CHANNELS) IN EACH CHANNELS.</p>   
+   <p class="Title">IN TIKTOK </p>
+ <p>1.FOLLOW ALL OUR 10 TIKTOK CHANNELS ,THE FIRST ONE IS IN THE TIPS SECTION AND YOU FOUND THE OTHER ON OUR VIDEOS.</p>
+<p>2.HAVING AT LEAST 1000 VIEWS  ON EACH EACH YOUTUBE CHANNELS.(WE CAN NOW AUTOMATICALLY)</p>
+     <p class="Title">IN FACEBOOK </p>
+ <p>1.FOLLOW  ALL OUR 10 FACEBOOK CHANNELS ,THE FIRST ONE IS IN THE TIPS SECTION AND YOU FOUND THE OTHER ON OUR VIDEOS.</p>
+<p>2.HAVING AT LEAST 1000 LIKES  ON EACH EACH FACEBOOK CHANNELS.</p>
+<p>2.HAVING AT LEAST 5000 MESSAGES  ON EACH FACEBOOK CHANNELS.</p>   
+   
+ <p>SO, AFTER YOU COMPLETE THE TASKS THE SOFTWARE CREATED FOR THIS PURPOSE WILL AUTOMATICALLY CHECK THAT AND ACTIVATE THE BELOW BUTTON.</p>  
+      <button class="Title">GET THE PREMIUM TIP</p>
+    </div>
+    
+
+
+
+  
+
+            
+
+ <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>  
+
+
+
+
+
+                       
+    <script > 
+    // Modal elements
+            const modal = document.getElementById("myModal");
+            const modalMessage = document.getElementById("modal-message");
+            const closeModal = document.getElementsByClassName("close")[0];
+
+            // Function to show modal with a message
+            const showModal = (message) => {
+                modalMessage.innerText = message;
+                modal.style.display = "block";
+            };
+
+            // Close the modal when the user clicks on the close button
+            closeModal.onclick = () => {
+                modal.style.display = "none";
+            };
+
+            // Close the modal when the user clicks outside of it
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+
+ 
+document.addEventListener('DOMContentLoaded', () => {
+    const newUserSection = document.getElementById('welcome-new');
+    const signInForm = document.getElementById('signin-form');
+    const returningUserSection = document.getElementById('returning-user');
+    const gameSection = document.getElementById('game-section');
+    
+    const signinBtn = document.getElementById('signin-btn');
+    const fileAccessCheckbox = document.getElementById('file-access-checkbox');
+    const finishBtn = document.getElementById('finish-btn');
+    const usernameInput = document.getElementById('username-input');
+    const passwordInput = document.getElementById('password-input');
+    const mainGame = document.getElementById('main-game');
+    
+    const returningPasswordInput = document.getElementById('returning-password-input');
+    const eyeBtn = document.getElementById('eye-btn');
+    const verifyBtn = document.getElementById('verify-btn');
+    const continueBtn = document.getElementById('continue-btn');
+    const usernameDisplay = document.getElementById('username-display');
+    
+    const mainGameBtn = document.getElementById('main-game-btn');
+    const coinsEarned = document.getElementById('coins-earned');
+    const totalCoins = document.getElementById('total-coins');
+    const rank = document.getElementById('rank');
+
+    // Check if user is new or returning
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+    if (username && password) {
+        newUserSection.style.display = 'none';
+        returningUserSection.style.display = 'block';
+        mainGame.style.display='none';
+        usernameDisplay.textContent = username;
+    } else {
+        newUserSection.style.display = 'block';
+       mainGame.style.display='none'; returningUserSection.style.display = 'none';
+    }
+
+    // New user sign in process
+    signinBtn.addEventListener('click', () => {
+        newUserSection.style.display = 'none';
+        signInForm.style.display = 'block';
+    });
+
+    fileAccessCheckbox.addEventListener('change', () => {
+        finishBtn.disabled = !fileAccessCheckbox.checked;
+    });
+
+    finishBtn.addEventListener('click', () => {
+        const usernameValue = usernameInput.value.trim();
+        const passwordValue = passwordInput.value.trim();
+
+        if (usernameValue && passwordValue) {
+            localStorage.setItem('username', usernameValue);
+            localStorage.setItem('password', passwordValue);
+            showModal("YOU ARE SUCCESSFULLY SIGNED IN!!!!!!!!");
+            location.reload();
+        }
+    });
+
+    // Returning user verification process
+    eyeBtn.addEventListener('click', () => {
+        if (returningPasswordInput.type === 'password') {
+            returningPasswordInput.type = 'text';
+        } else {
+            returningPasswordInput.type = 'password';
+        }
+    });
+
+    verifyBtn.addEventListener('click', () => {
+        if (returningPasswordInput.value === localStorage.getItem('password')) {
+            continueBtn.disabled = false;
+        } else {
+            showModal("Incorrect password");
+            
+        }
+    });
+
+    continueBtn.addEventListener('click', () => {
+        returningUserSection.style.display = 'none';
+        gameSection.style.display = 'block';
+        updateGameStats();
+    });
+
+    // Game button functionality
+    mainGameBtn.addEventListener('click', () => {
+        let total = parseInt(totalCoins.textContent);
+        total += 5;
+        totalCoins.textContent = total;
+        updateRank(total);
+    });
+
+    function updateGameStats() {
+        const coins = parseInt(localStorage.getItem('total-coins')) || 10000;
+        totalCoins.textContent = coins;
+        updateRank(coins);
+    }
+ 
+    function updateRank(coinDisplay) {
+        let rankText = '';
+        if ( coinDisplay> 1000000000) rankText = 'King Of VD 👑';
+        else if (coinDisplay >500000000) rankText = 'Diamond Master 💎';
+        else if (coinDisplay > 150000000) rankText = 'Platinum Master 🎉';
+        else if (coinDisplay > 50000000) rankText = 'Golden Master 🪝';
+        else if (coinDisplay > 10000000) rankText = 'Silver Master 💍';
+        else if (coinDisplay > 1000000) rankText = 'Bronze Master 💴';
+        else if (coinDisplay > 100000) rankText = 'Intermediate 💫';
+        else rankText = 'Beginner 🎩';
+        rank.textContent = rankText;
+        localStorage.setItem('total-coins', total);
+    }
+});
+  
+  
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const myAccountButton = document.getElementById('myAccountButton');
+    const tipsButton = document.getElementById('tips-btn');
+    const gameButton = document.getElementById('gameButton');
+    const content = document.getElementById('content');
+    const resetDataBtn = document.getElementById('reset-data-btn');
+    const withdrawButton= document.getElementById('withdrawButton');
+    const passwordInputAc = document.getElementById('passwordInput');
+    const passwordField = document.getElementById('password');
+    const checkPasswordButton = document.getElementById('checkPassword');
+    const myAccount = document.getElementById('myAccount-section');
+      const mainGame = document.getElementById('main-game');
+ 
+    
+  
+      
+    let username = localStorage.getItem('username') || 'Guest';
+    let password = localStorage.getItem('password') || '';
+
+    let level = localStorage.getItem('level') || '';
+
+   
+    
+       
+    // Show my account section
+myAccountButton.addEventListener('click', function () {
+    content.innerHTML = `
+            <h1>My Account</h1>
+            <div class="display-box">${username}</div>
+            <p>WELCOME TO YOUR ACCOUNT (${username})</p>
+            
+            <h1>Options Section</h1>
+    <p>✓ You can withdraw your EYU-COIN if your EYU-COIN is above 100,000,000 and the software created for this purpose is multiply your couns by 15$-50$ based on your participation in our socialmedia pages. </p>
+    <p>✓ You can withdraw your EYU-COIN if your EYU-COIN is above 1,000,000,000 and the software created for this purpose is multiply your couns by 1$-5$ based on your participation in our socialmedia pages.</p>
+    <p>✓ You can withdraw your EYU-COIN if your EYU-COIN is above 50,000,000 and the software created for this purpose is multiply your couns by 0.1$-0.75$ based on your participation in our socialmedia pages.</p>
+    <p> WARNINGS ⚠️</p>
+    <p>  DON'T SHARE YOUR PASSWORD</p>
+    <p> WHEN YOU ENTER YOUR BANK ACCOUNT OR PAYPAL ACCOUNT WRITE PROPERLY.</p>
+    <p> DON'T FIND TEXTS IN OTHER socialmedia .</p>
+    <p> FOLLOW ALL INSTRUCTIONS IN THE VD-COIN.</p>         
+        `;
+      withdrawButton.style.display = 'block';  
+      resetDataBtn.style.display ='block';
+   myAccount.style.display = 'block';
+    // Show my account section  
+    document.getElementById('About-us').style.display = ' none';
+    
+    
+    mainGame.style.display = 'none'; // Hide main game section
+      
+    tipsSection.style.display = 'none'; // Hide tips section
+    
+    
+    
+    gameSection.style.display = 'block'; // Ensure game section remains visible
+    
+ });  
+    // Setup event listener for withdraw button
+   
+  resetDataBtn.addEventListener('click', () => {
+        
+            localStorage.clear();
+            showModal("All data has been reset. The game will restart.");
+            location.reload(); // Reload the page to restart the game as a new user
+        
+    });
+
+ 
+   
+    
+    withdrawButton.addEventListener('click', function () {
+  showModal("Not now");   
+    });
+ 
+    checkPasswordButton.addEventListener('click', function () {
+        if (passwordField.value === password) {
+            
+passwordInputAc.style.display='none';
+withdrawButton.style.display='none';            
+            content.innerHTML = `
+    <h1>Options Section</h1>
+    <p>✓ You can withdraw your EYU-COIN if your EYU-COIN is above 100,000,000 and the software created for this purpose is multiply your couns by 15$-50$ based on your participation in our socialmedia pages. </p>
+    <p>✓ You can withdraw your EYU-COIN if your EYU-COIN is above 1,000,000,000 and the software created for this purpose is multiply your couns by 1$-5$ based on your participation in our socialmedia pages.</p>
+    <p>✓ You can withdraw your EYU-COIN if your EYU-COIN is above 50,000,000 and the software created for this purpose is multiply your couns by 0.1$-0.75$ based on your participation in our socialmedia pages.</p>
+    <p> WARNINGS ⚠️</p>
+    <p>  DON'T SHARE YOUR PASSWORD</p>
+    <p> WHEN YOU ENTER YOUR BANK ACCOUNT OR PAYPAL ACCOUNT WRITE PROPERLY.</p>
+    <p> DON'T FIND TEXTS IN OTHER socialmedia .</p>
+    <p> FOLLOW ALL INSTRUCTIONS IN THE VD-COIN.</p>
+    
+    <button id="finalWithdrawButton" 
+        style="${['Silver Master 💍', 'Golden Master 🪝', 'Platinum Master 🎉', 'Diamond Master 💎', 'King Of VD 👑'].includes(level) ? '' : 'background-color: grey;'}" 
+        ${['Silver Master 💍', 'Golden Master 🪝', 'Platinum Master 🎉', 'Diamond Master 💎', 'King Of VD 👑'].includes(level) ? '' : 'disabled'}>
+        WITHDRAW
+    </button>
+`;
+   myAccount.style.display = 'block'; // Show my account section           
+        } else {
+            showModal("Incorrect password");
+            passwordInput.classList.add('hidden');
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+            const coinGrade = document.getElementById('coin-grade');
+            const youtubeCounterDisplay = document.getElementById('youtube-counter-display');
+            const telegramCounterDisplay = document.getElementById('telegram-counter-display');
+            const instagramCounterDisplay = document.getElementById('instagram-counter-display');
+            const tiktokCounterDisplay = document.getElementById('tiktok-counter-display');
+            const facebookCounterDisplay = document.getElementById('facebook-counter-display');
+            const passwordSection = document.getElementById('password-section');
+            const revealedText = document.getElementById('revealed-text');
+            const passwordInput = document.getElementById('password-input');
+            const submitPasswordBtn = document.getElementById('submit-password-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const getTextBtn = document.getElementById('get-text-btn');
+            const add10CoinsBtn = document.getElementById('add-10-coins-btn');
+
+            const youtubeInput = document.getElementById('youtube-input');
+            const claimYouTubeBtn = document.getElementById('claim-youtube-btn');
+            const telegramInput = document.getElementById('telegram-input');
+            const claimTelegramBtn = document.getElementById('claim-telegram-btn');
+            const instagramInput = document.getElementById('instagram-input');
+            const claimInstagramBtn = document.getElementById('claim-instagram-btn');
+            const tiktokInput = document.getElementById('tiktok-input');
+            const claimTiktokBtn = document.getElementById('claim-tiktok-btn');
+            const facebookInput = document.getElementById('facebook-input');
+            const claimFacebookBtn = document.getElementById('claim-facebook-btn');
+
+
+
+            const youtubeTexts = [
+"Camera", "Mesmer", "Bamboo", "Beaver", "Candle", "Gannet", "Pistol", "Fiddle", "Pebble", "Ferret", "Turtle", "Magnet", "Raft", "Badge", "Cradle", "Spoon", "Bronze", "Sphinx", "Plaque", "Beeswax", "Tartan", "Jacket", "Yonder", "Bucket", "Plaque", "Rabbit", "Parrot", "Sexton", "Coarse", "Kitten", "Gecko", "Mantis", "Helium", "Wrench", "Tallow", "Weasel", "Sledge", "Bullet", "Nickel", "Moth", "Velvet", "Beaver", "Baboon", "Anorak", "Tin", "Bishop", "Jigsaw", "Falcon", "Eclair", "Pliers", "Sexton", "Hammer", "Vessel", "Jungle", "Bullet", "Racer", "Hatchet", "Sledge", "Barite", "Laurel", "Snare", "Drawer", "Trivet", "Snook", "Pencil", "Snare", "Velvet", "Album", "Summer", "Violet", "Desert", "Carrot", "Camera", "Snook", "Almond", "Cylinder", "Sphinx", "Armor", "Sexton", "Cradle", "Tin", "Packet", "Tuna", "Beeswax", "Acorns", "Crystal", "Barrow", "Sexton", "Snook", "Denim", "Magnet", "Fabric", "Plaque", "Falcon", "Helmet", "Teasel", "Jacket", "Jacket", "Flannel", "Medal"];
+            const telegramTexts = ["Fabric", "Racoon", "Vessel", "Onager", "Jungle", "Paddle", "Goggle", "Hammer", "Tunic", "Mirror", "Gerbil", "Chicken", "Beagle", "Barrel", "Raft", "Cloth", "Handle", "Statue", "Crystal", "Fabric", "Sexton", "Chicken", "Camel", "Carrot", "Jungle", "Knife", "Vessel", "Packet", "Spoon", "Barrel", "Rattle", "Jungle", "Desert", "Camera", "Pillow", "Summer", "Weasel", "Nettle", "Tarpon", "Barrel", "Tunic", "Candle", "Sexton", "Jungle", "Helmet", "Helmet", "Snare", "Jungle", "Spoon", "Pistol", "Fabric", "Fox", "Velvet", "Spoon", "Jacket", "Medal", "Candle", "Rope", "Spoon", "Weasel", "Knife", "Coconut", "Summer", "Sexton", "Helmet", "Velvet", "Barrel", "Monkey", "Armor", "Candle", "Candle", "Acorns", "Tartan", "Armor", "Candle", "Sexton", "Jacket", "Spoon", "Barrel", "Acorns", "Anorak", "Candle", "Barrel", "Spoon", "Fox", "Knife", "Helmet", "Helmet", "Fox", "Fabric", "Fox", "Barrel", "Cloth", "Jacket", "Helmet", "Knife", "Medal", "Sexton", "Candle", "Spoon", "Fox", "Fabric", "Fox", "Spoon", "Candle"];
+            const instagramTexts = ["Trivet", "Tin", "Fox", "Anorak", "Candle", "Mirror", "Jacket", "Spoon", "Candle", "Spoon", "Velvet", "Snare", "Fabric", "Barrel", "Spoon", "Trivet", "Bucket", "Desert", "Beagle", "Candle", "Sexton", "Helmet", "Barrel", "Spoon", "Mirror", "Cloth", "Fabric", "Spoon", "Spoon", "Fabric", "Sexton", "Jacket", "Barrel", "Candle", "Helmet", "Fabric", "Fox", "Rope", "Spoon", "Sexton", "Helmet", "Spoon", "Fabric", "Spoon", "Candle", "Rope", "Spoon", "Candle", "Barrel", "Fabric", "Spoon", "Desert", "Sexton", "Helmet", "Spoon", "Jacket", "Cloth", "Fabric", "Fox", "Barrel", "Candle", "Jacket", "Cloth", "Candle", "Barrel", "Fabric", "Cloth", "Jacket", "Spoon", "Barrel", "Cloth", "Fabric", "Spoon", "Barrel", "Cloth", "Fabric", "Spoon", "Barrel", "Fabric", "Fox", "Barrel", "Cloth", "Jacket", "Candle", "Helmet", "Spoon", "Barrel", "Fabric", "Helmet", "Candle", "Spoon", "Jacket", "Cloth", "Fabric", "Fox", "Spoon", "Barrel", "Cloth", "Helmet", "Jacket", "Barrel"];
+            const tiktokTexts = ["Candle", "Rope", "Spoon", "Weasel", "Knife", "Coconut", "Summer", "Sexton", "Helmet", "Velvet", "Barrel", "Monkey", "Armor", "Candle", "Candle", "Acorns", "Tartan", "Armor", "Candle", "Sexton", "Jacket", "Spoon", "Barrel", "Acorns", "Anorak", "Candle", "Barrel", "Spoon", "Fox", "Knife", "Helmet", "Helmet", "Fox", "Fabric", "Fox", "Barrel", "Cloth", "Jacket", "Helmet", "Knife", "Medal", "Sexton", "Candle", "Spoon", "Fox", "Fabric", "Fox", "Spoon", "Candle",
+"Fabric", "Racoon", "Vessel", "Onager", "Jungle", "Paddle", "Goggle", "Hammer", "Tunic", "Mirror", "Gerbil", "Chicken", "Beagle", "Barrel", "Raft", "Cloth", "Handle", "Statue", "Crystal", "Fabric", "Sexton", "Chicken", "Camel", "Carrot", "Jungle", "Knife", "Vessel", "Packet", "Spoon", "Barrel", "Rattle", "Jungle", "Desert", "Camera", "Pillow", "Summer", "Weasel", "Nettle", "Tarpon", "Barrel", "Tunic", "Candle", "Sexton", "Jungle", "Helmet", "Helmet", "Snare", "Jungle", "Spoon", "Pistol", "Fabric", "Fox", "Velvet", "Spoon", "Jacket", "Medal"];
+            const facebookTexts = [ "Fabric", "Spoon", "Candle", "Rope", "Spoon", "Candle", "Barrel", "Fabric", "Spoon", "Desert", "Sexton", "Helmet", "Spoon", "Jacket", "Cloth", "Fabric", "Fox", "Barrel", "Candle", "Jacket", "Cloth", "Candle", "Barrel", "Fabric", "Cloth", "Jacket", "Spoon", "Barrel", "Cloth", "Fabric", "Spoon", "Barrel", "Cloth", "Fabric", "Spoon", "Barrel", "Fabric", "Fox", "Barrel", "Cloth", "Jacket", "Candle", "Helmet", "Spoon", "Barrel", "Fabric", "Helmet", "Candle", "Spoon", "Jacket", "Cloth", "Fabric", "Fox", "Spoon", "Barrel", "Cloth", "Helmet", "Jacket", "Barrel","Tin", "Fox", "Anorak", "Candle", "Mirror", "Jacket", "Spoon", "Candle", "Spoon", "Velvet", "Snare", "Fabric", "Barrel", "Spoon", "Trivet", "Bucket", "Desert", "Beagle", "Candle", "Sexton", "Helmet", "Barrel", "Spoon", "Mirror", "Cloth", "Fabric", "Spoon", "Spoon", "Fabric", "Sexton", "Jacket", "Barrel", "Candle", "Helmet", "Fabric", "Fox", "Rope", "Spoon", "Sexton", "Helmet", "Spoon"];
+            let youtubeCounterValue = parseInt(localStorage.getItem('youtubeCounter')) || 0;
+            let telegramCounterValue = parseInt(localStorage.getItem('telegramCounter')) || 0;
+            let instagramCounterValue = parseInt(localStorage.getItem('instagramCounter')) || 0;
+            let tiktokCounterValue = parseInt(localStorage.getItem('tiktokCounter')) || 0;
+            let facebookCounterValue = parseInt(localStorage.getItem('facebookCounter')) || 0;
+
+            let predefinedYouTubeText = getTextForCounter(youtubeCounterValue, youtubeTexts);
+            let predefinedTelegramText = getTextForCounter(telegramCounterValue, telegramTexts);
+            let predefinedInstagramText = getTextForCounter(instagramCounterValue, instagramTexts);
+            let predefinedTiktokText = getTextForCounter(tiktokCounterValue, tiktokTexts);
+            let predefinedFacebookText = getTextForCounter(facebookCounterValue, facebookTexts);
+
+            function getTextForCounter(counter, texts) {
+                return texts[counter % texts.length];
+            }
+
+            function updateCounter(counterDisplay, counterValue) {
+                counterDisplay.innerText = counterValue;
+            }
+
+            function initializeCounters() {
+                const coinValue = parseInt(localStorage.getItem('coinValue')) || 0;
+                coinGrade.innerText = coinValue;
+
+                youtubeCounterValue = parseInt(localStorage.getItem('youtubeCounter')) || 0;
+                telegramCounterValue = parseInt(localStorage.getItem('telegramCounter')) || 0;
+                instagramCounterValue = parseInt(localStorage.getItem('instagramCounter')) || 0;
+                tiktokCounterValue = parseInt(localStorage.getItem('tiktokCounter')) || 0;
+                facebookCounterValue = parseInt(localStorage.getItem('facebookCounter')) || 0;
+
+                updateCounter(youtubeCounterDisplay, youtubeCounterValue);
+                updateCounter(telegramCounterDisplay, telegramCounterValue);
+                updateCounter(instagramCounterDisplay, instagramCounterValue);
+                updateCounter(tiktokCounterDisplay, tiktokCounterValue);
+                updateCounter(facebookCounterDisplay, facebookCounterValue);
+            }
+
+            claimYouTubeBtn.addEventListener('click', () => {
+                if (youtubeInput.value === predefinedYouTubeText) {
+                    let currentCoins = parseInt(coinGrade.innerText);
+                    currentCoins += 30000;
+                    coinGrade.innerText = currentCoins;
+                    localStorage.setItem('coinValue', currentCoins);
+
+                    youtubeCounterValue += 1;
+                    localStorage.setItem('youtubeCounter', youtubeCounterValue);
+                    updateCounter(youtubeCounterDisplay, youtubeCounterValue);
+
+                    predefinedYouTubeText = getTextForCounter(youtubeCounterValue, youtubeTexts);
+         showModal("CLAIMED SUCCESSFULLY");           youtubeInput.value = '';
+                } else {
+                    showModal("Incorrect text! Please try again.");
+                }
+            });
+
+            claimTelegramBtn.addEventListener('click', () => {
+                if (telegramInput.value === predefinedTelegramText) {
+                    let currentCoins = parseInt(coinGrade.innerText);
+                    currentCoins += 20000;
+                    coinGrade.innerText = currentCoins;
+                    localStorage.setItem('coinValue', currentCoins);
+
+                    telegramCounterValue += 1;
+                    localStorage.setItem('telegramCounter', telegramCounterValue);
+                    updateCounter(telegramCounterDisplay, telegramCounterValue);
+
+                    predefinedTelegramText = getTextForCounter(telegramCounterValue, telegramTexts);
+          showModal("CLAIMED SUCCESSFULLY");            telegramInput.value = '';
+                } else {
+                    showModal("Incorrect text! Please try again.");
+                }
+            });
+
+            claimInstagramBtn.addEventListener('click', () => {
+                if (instagramInput.value === predefinedInstagramText) {
+                    let currentCoins = parseInt(coinGrade.innerText);
+                currentCoins += 20000;
+                    coinGrade.innerText = currentCoins;
+                    localStorage.setItem('coinValue', currentCoins);
+
+                    instagramCounterValue += 1;
+                    localStorage.setItem('instagramCounter', instagramCounterValue);
+                    updateCounter(instagramCounterDisplay, instagramCounterValue);
+
+                    predefinedInstagramText = getTextForCounter(instagramCounterValue, instagramTexts);
+            showModal("CLAIMED SUCCESSFULLY");          instagramInput.value = '';
+                } else {
+                    showModal("Incorrect text! Please try again.");
+                }
+            });
+
+            claimTiktokBtn.addEventListener('click', () => {
+                if (tiktokInput.value === predefinedTiktokText) {
+                    let currentCoins = parseInt(coinGrade.innerText);
+                    currentCoins += 20000;
+                    coinGrade.innerText = currentCoins;
+                    localStorage.setItem('coinValue', currentCoins);
+
+                    tiktokCounterValue += 1;
+                    localStorage.setItem('tiktokCounter', tiktokCounterValue);
+                    updateCounter(tiktokCounterDisplay, tiktokCounterValue);
+
+                    predefinedTiktokText = getTextForCounter(tiktokCounterValue, tiktokTexts);
+  showModal("CLAIMED SUCCESSFULLY");  
+                    
+                    tiktokInput.value = '';
+                } else {
+                    showModal("Incorrect text! Please try again.");
+                }
+            });
+
+            claimFacebookBtn.addEventListener('click', () => {
+                if (facebookInput.value === predefinedFacebookText) {
+                    let currentCoins = parseInt(coinGrade.innerText);
+                    currentCoins += 20000;
+                    coinGrade.innerText = currentCoins;
+                    localStorage.setItem('coinValue', currentCoins);
+
+                    facebookCounterValue += 1;
+                    localStorage.setItem('facebookCounter', facebookCounterValue);
+                    updateCounter(facebookCounterDisplay, facebookCounterValue);
+
+                    predefinedFacebookText = getTextForCounter(facebookCounterValue, facebookTexts);
+ showModal("CLAIMED SUCCESSFULLY");                     facebookInput.value = '';
+                } else {
+                    showModal("Incorrect text! Please try again.");
+                }
+            
+
+             localStorage.setItem('coinValue', currentCoins);
+            });
+
+            getTextBtn.addEventListener('click', () => {
+                passwordSection.classList.remove('hidden');
+            });
+
+            submitPasswordBtn.addEventListener('click', () => {
+                if (passwordInput.value === 'Nahom@110108') {
+                    revealedText.innerHTML = `
+                        <p>YouTube Text: ${predefinedYouTubeText}</p>
+                        <p>Telegram Text: ${predefinedTelegramText}</p>
+                        <p>Instagram Text: ${predefinedInstagramText}</p>
+                        <p>TikTok Text: ${predefinedTiktokText}</p>
+                        <p>Facebook Text: ${predefinedFacebookText}</p>
+                    `;
+                } else {
+                    showModal("Incorrect password! Please try again.");
+                }
+                passwordInput.value = '';
+            });
+
+            resetBtn.addEventListener('click', () => {
+                localStorage.clear();
+                coinDisplay.innerText = '0';
+                youtubeCounterDisplay.innerText = '0';
+                telegramCounterDisplay.innerText = '0';
+                instagramCounterDisplay.innerText = '0';
+                tiktokCounterDisplay.innerText = '0';
+                facebookCounterDisplay.innerText = '0';
+                location.reload();
+            });
+
+            initializeCounters();
+        }); document.addEventListener('DOMContentLoaded', () => {
+    const myAccountButton = document.getElementById('myAccountButton');
+    const tipsBtn = document.getElementById('tips-btn');
+    const mainGameBtn = document.getElementById('gameButton');
+    const gameSection = document.getElementById('game-section');
+    const myAccount = document.getElementById('myAccount-section');
+    const tipsSection = document.getElementById('tips-section');
+    const mainGame = document.getElementById('main-game');
+
+    // Show my account section and game section only
+    myAccountButton.addEventListener('click', function () {
+        gameSection.style.display = 'block'; // Show game section       
+         buyButtons.style.display='none';
+        mainGame.style.display = 'none'; // Hide main game section
+        tipsSection.style.display = 'none'; // Hide tips section
+        buyButtons.style.display='none';
+    });
+   
+        
+
+    // Show tips section and game section only
+    tipsBtn.addEventListener('click', () => {
+        gameSection.style.display = 'block'; // Show game section
+        tipsSection.style.display = 'block'; // Show tips section
+        mainGame.style.display = 'none'; // Hide main game section
+        myAccount.style.display = 'none'; // Hide my account section
+        document.getElementById('About-us').style.display = ' none';
+        buyButtons.style.display='none'; 
+    });
+
+    // Show game section and main game section only
+    mainGameBtn.addEventListener('click', () => {
+        tipsSection.style.display = 'none'; // Hide tips section
+        myAccount.style.display = 'none'; // Hide my account section
+        mainGame.style.display = 'block'; // Show main game section
+        gameSection.style.display = 'block'; // Show game section
+        document.getElementById('About-us').style.display = ' none';
+        
+        
+        resetDataBtn.style.display ='none';
+        
+    });
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const newUserSection = document.getElementById('welcome-new');
+    const signInForm = document.getElementById('signin-form');
+    const returningUserSection = document.getElementById('returning-user');
+    const gameSection = document.getElementById('game-section');
+
+    const signinBtn = document.getElementById('signin-btn');
+    const fileAccessCheckbox = document.getElementById('file-access-checkbox');
+    const finishBtn = document.getElementById('finish-btn');
+    const usernameInput = document.getElementById('username-input');
+    const passwordInput = document.getElementById('password-input');
+    const mainGame = document.getElementById('main-game');
+
+    const returningPasswordInput = document.getElementById('returning-password-input');
+    const eyeBtn = document.getElementById('eye-btn');
+    const verifyBtn = document.getElementById('verify-btn');
+    const continueBtn = document.getElementById('continue-btn');
+    const usernameDisplay = document.getElementById('username-display');
+
+    const mainGameBtn = document.getElementById('main-game-btn');
+    const coinsEarned = document.getElementById('coins-earned');
+    const totalCoins = document.getElementById('total-coins');
+    const rank = document.getElementById('rank');
+
+    // Check if user is new or returning
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+    if (username && password) {
+        newUserSection.style.display = 'none';
+        returningUserSection.style.display = 'block';
+        usernameDisplay.textContent = username;
+    } else {
+        newUserSection.style.display = 'block';
+        returningUserSection.style.display = 'none';
+    }
+
+    // New user sign in process
+    signinBtn.addEventListener('click', () => {
+        newUserSection.style.display = 'none';
+        signInForm.style.display = 'block';
+    });
+
+    fileAccessCheckbox.addEventListener('change', () => {
+        finishBtn.disabled = !fileAccessCheckbox.checked;
+    });
+
+    finishBtn.addEventListener('click', () => {
+        const usernameValue = usernameInput.value.trim();
+        const passwordValue = passwordInput.value.trim();
+
+        if (usernameValue && passwordValue) {
+            localStorage.setItem('username', usernameValue);
+            localStorage.setItem('password', passwordValue);
+            showModal("YOU ARE SUCCESSFULLY SIGNED IN!!!!!!!!");
+            location.reload();
+        }
+    });
+
+    // Returning user verification process
+    eyeBtn.addEventListener('click', () => {
+        if (returningPasswordInput.type === 'password') {
+            returningPasswordInput.type = 'text';
+        } else {
+            returningPasswordInput.type = 'password';
+        }
+    });
+
+    verifyBtn.addEventListener('click', () => {
+        if (returningPasswordInput.value === localStorage.getItem('password')) {
+            continueBtn.disabled = false;
+        } else {
+            showModal("Incorrect password");
+        }
+    });
+
+    continueBtn.addEventListener('click', () => {
+        returningUserSection.style.display = 'none';
+        gameSection.style.display = 'block';
+        updateGameStats();
+    });
+
+    // Game button functionality
+    mainGameBtn.addEventListener('click', () => {
+        let total = parseInt(totalCoins.textContent);
+        total += 5;
+        totalCoins.textContent = total;
+        updateRank(total);
+    });
+
+    function updateGameStats() {
+        const coins = parseInt(localStorage.getItem('total-coins')) || 10000;
+        totalCoins.textContent = coins;
+        updateRank(coins);
+    }
+    
+    function updateRank(coinDisplay) {
+        let rankText = '';
+        if (coinDisplay > 1000000000) rankText = 'King Of VD 👑';
+        else if (coinDisplay > 500000000) rankText = 'Diamond Master 💎';
+        else if (coinDisplay> 150000000) rankText = 'Platinum Master 🎉';
+        else if ( coinDisplay> 50000000) rankText = 'Golden Master 🪝';
+        else if (coinDisplay > 10000000) rankText = 'Silver Master 💍';
+        else if (coinDisplay> 1000000) rankText = 'Bronze Master 💴';
+        else if ( coinDisplay> 100000) rankText = 'Intermediate 💫';
+        else rankText = 'Beginner 🎩';
+        rank.textContent = rankText;
+        localStorage.setItem('total-coins', total);
+    }
+
+    document.getElementById('about-us-btn').addEventListener('click', () => {
+        document.getElementById('content-about').innerHTML = `
+            <section id="about">
+                <h2>About VD COIN </h2>
+                <p>VD-COIN is a fun and interactive way to earn rewards by entering texts from YouTube, Telegram, and Instagram channels. Enjoy your time and rack up those coins!
+      You can communicate us through 
+      <a href="mailto:johndear9325@gmail.com" target="blank">Our Email</a>
+      </p>
+            </section>
+            <section id="features">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>Interactive Gameplay</h3>
+                        <p>Engage with your favorite content and earn coins effortlessly.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Random Text Challenges</h3>
+                        <p>Receive new text challenges every few hours for a fresh experience.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Secure Rewards</h3>
+                        <p>Our system ensures your coins and rewards are secure and fairly distributed.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="how-it-works">
+                <h2>How It Works</h2>
+                <p>Simply follow these steps:</p>
+                <ol>
+                    <li>Visit our YouTube, Telegram,  Instagram channel,Tiktok and Facebook.</li>
+                    <li>Find the text on the video or other Message we post and enter it on the game page.</li>
+                    <li>Earn coins and enjoy exclusive rewards!</li>
+                </ol>
+            </section>
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or need support, feel free to reach out!</p>
+                <form id="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        `;
+        document.getElementById('About-us').style.display = 'block';
+        
+        mainGame.style.display = 'none';
+        myAccount.style.display = 'none';
+        tipsSection.style.display = 'none';
+    });
+    const claimButtons = ['claim-youtube-btn', 'claim-telegram-btn', 'claim-instagram-btn'];
+    claimButtons.forEach(btnId => {
+        document.getElementById(btnId).addEventListener('click', () => {
+            const correctText = localStorage.getItem(btnId.split('-')[1] + 'Text');
+            const userText = document.getElementById(btnId.split('-')[1] + '-input').value.trim();
+
+            if (userText === correctText) {
+                let currentCoins = parseInt(totalCoins.textContent);
+                switch (btnId) {
+                    case 'claim-youtube-btn':
+                        currentCoins += 30000;
+                        break;
+                    case 'claim-telegram-btn':
+                        currentCoins += 10000;
+                        break;
+                    case 'claim-instagram-btn':
+                        currentCoins += 30000;
+                        break;
+                }
+                totalCoins.textContent = currentCoins;
+                localStorage.setItem('total-coins', currentCoins);
+            }
+        });
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const marketCurrencyDisplay = document.getElementById('market-currency');
+    const profitPerMinuteDisplay = document.getElementById('profit-per-minute');
+    const coinsDisplay = document.getElementById('coin-display');
+    const addCoinsBtn = document.getElementById('add-coins-btn');
+    const moreTipsBtn = document.getElementById('more-tips-btn');
+    const buyButtons = document.getElementById('buy-buttons');
+    const buyCoffeeBtn = document.getElementById('buy-coffee');
+    const buyBurgerBtn = document.getElementById('buy-burger');
+       const mainGame = document.getElementById('main-game');
+    const buyBicycleBtn = document.getElementById('buy-bicycle');
+    const buyMotorBtn = document.getElementById('buy-motor');
+    const buyHelicopterBtn = document.getElementById('buy-helicopter');
+    const buyRocketBtn = document.getElementById('buy-rocket');
+    const buyRingBtn = document.getElementById('buy-ring');
+    const buyKingBtn = document.getElementById('buy-king');
+
+    let marketCurrency = parseFloat(localStorage.getItem('marketCurrency')) || 0;
+    let profitPerMinute = parseFloat(localStorage.getItem('profitPerMinute')) || 0;
+    let coins = parseFloat(localStorage.getItem('coins')) || 0;
+
+    const timerElements = {
+        'buy-coffee': buyCoffeeBtn,
+        'buy-burger': buyBurgerBtn,
+        'buy-bicycle': buyBicycleBtn,
+        'buy-motor': buyMotorBtn,
+        'buy-helicopter': buyHelicopterBtn,
+        'buy-rocket': buyRocketBtn,
+        'buy-ring': buyRingBtn,
+        'buy-king': buyKingBtn,
+    };
+
+    addCoinsBtn.addEventListener('click', () => {
+        coins += 10;
+        updateDisplays();
+    });
+
+    moreTipsBtn.addEventListener('click', () => {
+        buyButtons.style.display='block';
+mainGame.style.display='none';        
+tipsSection.style.display='none';
+myAccount.style.display='none';             
+    });
+
+    const handlePurchase = (button, cost, marketIncrease, profitIncrease, message) => {
+        if (coins >= cost) {
+            coins -= cost;
+            marketCurrency += marketIncrease;
+            profitPerMinute += profitIncrease;
+            showModal(message);
+            updateDisplays();
+            button.style.display = 'none';
+            startTimer(button.id);
+        } else {
+            showModal("INSUFFICIENT COINS");
+        }
+    };
+
+    const startTimer = (buttonId) => {
+        const timerDisplay = document.createElement('div');
+        timerDisplay.className = 'timer';
+        const button = timerElements[buttonId];
+        button.parentNode.insertBefore(timerDisplay, button);
+
+        const endTime = Date.now() + 30 * 60 * 1000; // 30 minutes from now
+        localStorage.setItem(buttonId + 'EndTime', endTime);
+
+        const updateTimer = () => {
+            const timeLeft = endTime - Date.now();
+            if (timeLeft > 0) {
+                const minutes = Math.floor(timeLeft / 1000 / 60);
+                const seconds = Math.floor((timeLeft / 1000) % 60);
+                timerDisplay.innerText = `Available in ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            } else {
+                clearInterval(timerInterval);
+                timerDisplay.remove();
+                button.style.display = 'block';
+                localStorage.removeItem(buttonId + 'EndTime');
+            }
+        };
+
+        updateTimer();
+        const timerInterval = setInterval(updateTimer, 1000);
+    };
+
+    const checkTimers = () => {
+        Object.keys(timerElements).forEach(buttonId => {
+            const endTime = parseInt(localStorage.getItem(buttonId + 'EndTime'));
+            if (endTime && endTime > Date.now()) {
+                const button = timerElements[buttonId];
+                button.style.display = 'none';
+                startTimer(buttonId);
+            }
+        });
+    };
+
+    buyCoffeeBtn.addEventListener('click', () => handlePurchase(buyCoffeeBtn, 500000, 5000, 65, "YOU SUCCESSFULLY BOUGHT THE COFFEE ☕!!!!!"));
+    buyBurgerBtn.addEventListener('click', () => handlePurchase(buyBurgerBtn, 1000000, 13000, 110, "YOU SUCCESSFULLY BOUGHT THE BURGER 🍔!!!!!"));
+    buyRingBtn.addEventListener('click', () => handlePurchase(buyRingBtn, 1500000, 15000, 250, "YOU SUCCESSFULLY BOUGHT THE RING 🎁!!!!!"));
+    buyKingBtn.addEventListener('click', () => handlePurchase(buyKingBtn, 3000000, 10000, 600, "YOU SUCCESSFULLY BOUGHT THE KING 👑!!!!!"));
+    buyBicycleBtn.addEventListener('click', () => handlePurchase(buyBicycleBtn, 5000000, 20000, 750, "YOU SUCCESSFULLY BOUGHT THE BICYCLE 🚲!!!!!"));
+    buyMotorBtn.addEventListener('click', () => handlePurchase(buyMotorBtn, 20000000, 450000, 0, "YOU SUCCESSFULLY BOUGHT THE MOTORCYCLE 🏍️!!!!!"));
+    buyHelicopterBtn.addEventListener('click', () => handlePurchase(buyHelicopterBtn, 30000000, 600000, 0, "YOU SUCCESSFULLY BOUGHT THE HELICOPTER 🚁!!!!!"));
+    buyRocketBtn.addEventListener('click', () => handlePurchase(buyRocketBtn, 1000000000, 10000000, 0, "YOU SUCCESSFULLY BOUGHT THE ROCKET 🚀!!!!!"));
+
+    function updateDisplays() {
+        marketCurrencyDisplay.innerText = `DD-COIN💵: ${marketCurrency.toFixed(1)}`;
+        profitPerMinuteDisplay.innerText = `Profit/min: ${profitPerMinute.toFixed(1)}`;
+        coinsDisplay.innerText = `${coins.toFixed(1)}`;
+
+        localStorage.setItem('marketCurrency', marketCurrency.toFixed(1));
+        localStorage.setItem('profitPerMinute', profitPerMinute.toFixed(1));
+        localStorage.setItem('coins', coins.toFixed(1));
+    }
+
+    setInterval(() => {
+        marketCurrency += profitPerMinute / 60;
+        updateDisplays();
+    }, 1000);
+
+    // Initial display update and check timers
+    updateDisplays();
+    checkTimers();
+});
+      </script>
+</body>
+</html>         
+    
+                
+     
+   

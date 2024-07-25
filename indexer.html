@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VD Coin Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preview1" class="preview">
+        <h1>THIS IS VD</h1>
+        <audio id="preview1-audio" src="audio1.mp3"></audio>
+    </div>
+    <div id="preview2" class="preview">
+        <h1>I AM VD COIN</h1>
+        <audio id="preview2-audio" src="audio2.mp3"></audio>
+        <button id="ok-btn" class="animate-btn">OK</button>
+    </div>
+    <div id="loading-panel" class="loading">
+        <h1>Loading...</h1>
+    </div>
+    <section id="welcome-new">
+        <h2>Welcome, New User!</h2>
+        <button id="signin-btn">Sign In</button>
+    </section>
+    <form id="signin-form">
+        <label for="username-input">Username:</label>
+        <input type="text" id="username-input">
+        <label for="password-input">Password:</label>
+        <input type="password" id="password-input">
+        <label>
+            <input type="checkbox" id="file-access-checkbox"> Allow file access
+        </label>
+        <button type="button" id="finish-btn" disabled="">Finish</button>
+    </form>
+    <section id="returning-user">
+        <h2>Welcome Back!</h2>
+        <p id="username-display"></p>
+        <label for="returning-password-input">Password:</label>
+        <input type="password" id="returning-password-input">
+        <button id="eye-btn">Show/Hide</button>
+        <button id="verify-btn">Verify</button>
+        <button id="continue-btn" disabled="">Continue</button>
+    </section>
+    <div id="loading-screen" class="loading">
+        <h1>Loading...</h1>
+    </div>
+    <section id="game-section">
+        <div id="main-game">
+            <h2>Game Stats</h2>
+            <p id="coins-earned">Coins Earned: 0</p>
+            <p id="total-coins">Total Coins: 0</p>
+            <p id="rank">Rank: Beginner</p>
+        </div>
+        <button id="main-game-btn">Start Game</button>
+    </section>
+    
+
+
+<script src="scripts.js"></script></body>
+<style>body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+.preview, .loading, #welcome-new, #signin-form, #returning-user, #game-section {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#preview1 {
+    display: flex;
+    background-image: url('background1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 2rem;
+}
+#preview2 {
+    display: flex;
+    background-image: url('background2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 2rem;
+    flex-direction: column;
+}
+.loading {
+    display: flex;
+    background-image: url('loading1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 2rem;
+}
+.animate-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    animation: bounce 1s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+#loading-screen {
+    display: flex;
+    background-image: url('loading2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 2rem;
+}
+section, form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+input, button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1rem;
+}
+@media (max-width: 768px) {
+    h1, h2, p {
+        font-size: 1.5rem;
+    }
+}</style><script>/*Here write your javascript code*/
+document.addEventListener('DOMContentLoaded', () => {
+    const newUserSection = document.getElementById('welcome-new');
+    const signInForm = document.getElementById('signin-form');
+    const returningUserSection = document.getElementById('returning-user');
+    const gameSection = document.getElementById('game-section');
+    const signinBtn = document.getElementById('signin-btn');
+    const fileAccessCheckbox = document.getElementById('file-access-checkbox');
+    const finishBtn = document.getElementById('finish-btn');
+    const usernameInput = document.getElementById('username-input');
+    const passwordInput = document.getElementById('password-input');
+    const mainGame = document.getElementById('main-game');
+    const returningPasswordInput = document.getElementById('returning-password-input');
+    const eyeBtn = document.getElementById('eye-btn');
+    const verifyBtn = document.getElementById('verify-btn');
+    const continueBtn = document.getElementById('continue-btn');
+    const usernameDisplay = document.getElementById('username-display');
+    const loadingScreen = document.getElementById('loading-screen');
+    const mainGameBtn = document.getElementById('main-game-btn');
+    const coinsEarned = document.getElementById('coins-earned');
+    const totalCoins = document.getElementById('total-coins');
+    const rank = document.getElementById('rank');
+    const preview1 = document.getElementById('preview1');
+    const preview2 = document.getElementById('preview2');
+    const preview1Audio = document.getElementById('preview1-audio');
+    const preview2Audio = document.getElementById('preview2-audio');
+    const okBtn = document.getElementById('ok-btn');
+    // Check if user is new or returning
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+    if (username && password) {
+        preview1.style.display = 'flex';
+        preview1Audio.play();
+        setTimeout(() => {
+            preview1.style.display = 'none';
+            loadingScreen.style.display = 'flex';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                preview2.style.display = 'flex';
+                preview2Audio.play();
+                okBtn.addEventListener('click', () => {
+                    preview2.style.display = 'none';
+                    returningUserSection.style.display = 'block';
+                    usernameDisplay.textContent = username;
+                });
+            }, 5000);
+        }, 7000);
+    } else {
+        preview1.style.display = 'flex';
+        preview1Audio.play();
+        setTimeout(() => {
+            preview1.style.display = 'none';
+            loadingScreen.style.display = 'flex';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                preview2.style.display = 'flex';
+                preview2Audio.play();
+                okBtn.addEventListener('click', () => {
+                    preview2.style.display = 'none';
+                    newUserSection.style.display = 'block';
+                });
+            }, 5000);
+        }, 7000);
+    }
+    // New user sign in process
+    signinBtn.addEventListener('click', () => {
+        newUserSection.style.display = 'none';
+        signInForm.style.display = 'block';
+    });
+    fileAccessCheckbox.addEventListener('change', () => {
+        finishBtn.disabled = !fileAccessCheckbox.checked;
+    });
+    finishBtn.addEventListener('click', () => {
+        const usernameValue = usernameInput.value.trim();
+        const passwordValue = passwordInput.value.trim();
+        if (usernameValue && passwordValue) {
+            localStorage.setItem('username', usernameValue);
+            localStorage.setItem('password', passwordValue);
+            showModal("YOU ARE SUCCESSFULLY SIGNED IN!!!!!!!!");
+            location.reload();
+        }
+    });
+    // Returning user verification process
+    eyeBtn.addEventListener('click', () => {
+        if (returningPasswordInput.type === 'password') {
+            returningPasswordInput.type = 'text';
+        } else {
+            returningPasswordInput.type = 'password';
+        }
+    });
+    verifyBtn.addEventListener('click', () => {
+        if (returningPasswordInput.value === localStorage.getItem('password')) {
+            continueBtn.disabled = false;
+        } else {
+            showModal("Incorrect password");
+        }
+    });
+    continueBtn.addEventListener('click', () => {
+        returningUserSection.style.display = 'none';
+        loadingScreen.style.display = 'flex';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            gameSection.style.display = 'block';
+        }, 2000); // Simulating a loading time of 2 seconds
+        updateGameStats();
+    });
+    function showModal(message) {
+        alert(message); // Simple alert for demonstration
+    }
+    function updateGameStats() {
+        // Update the game stats here
+        coinsEarned.textContent = "Coins Earned: " + (Math.random() * 100).toFixed(0);
+        totalCoins.textContent = "Total Coins: " + (Math.random() * 1000).toFixed(0);
+        rank.textContent = "Rank: " + ["Beginner", "Intermediate", "Expert"][Math.floor(Math.random() * 3)];
+    }
+    mainGameBtn.addEventListener('click', () => {
+        // Main game logic here
+        alert("Game Started");
+    });
+});</script></html>

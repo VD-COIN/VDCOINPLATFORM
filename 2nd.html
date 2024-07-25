@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Page</title>
+    <link rel="stylesheet" href="dataStyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Saved Data</h1>
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="dataScript.js"></script>
+</body>
+<style>body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}</style><script>/*Here write your javascript code*/
+document.addEventListener('DOMContentLoaded', function() {
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+        const { username, password } = JSON.parse(userData);
+        const tableBody = document.querySelector('#dataTable tbody');
+        const newRow = document.createElement('tr');
+
+        const usernameCell = document.createElement('td');
+        usernameCell.textContent = username;
+        newRow.appendChild(usernameCell);
+
+        const passwordCell = document.createElement('td');
+        passwordCell.textContent = password;
+        newRow.appendChild(passwordCell);
+
+        tableBody.appendChild(newRow);
+    } else {
+        alert('No data found.');
+    }
+});</script></html>

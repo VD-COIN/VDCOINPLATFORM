@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetooth Coin Transfer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Coin Transfer</h1>
+        <form id="transferForm">
+            <label for="sender">Sender:</label>
+            <input type="text" id="sender" name="sender" value="Alice" readonly>
+            
+            <label for="recipient">Recipient:</label>
+            <input type="text" id="recipient" name="recipient" required>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+            
+            <button type="button" onclick="transferCoins()">Transfer</button>
+        </form>
+        
+        <div id="result"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+<style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: center;
+}</style><script>/*Here write your javascript code*/
+class User {
+    constructor(name, initialBalance = 10000) {
+        this.name = name;
+        this.balance = initialBalance;
+    }
+
+    transferCoins(recipient, amount) {
+        if (this.balance >= amount) {
+            this.balance -= amount;
+            recipient.balance += amount;
+            return true;
+        }
+        return false;
+    }
+}
+
+const users = {
+    Alice: new User("Alice"),
+    Bob: new User("Bob")
+};
+
+function transferCoins() {
+    const senderName = document.getElementById('sender').value;
+    const recipientName = document.getElementById('recipient').value;
+    const amount = parseInt(document.getElementById('amount').value, 10);
+    const sender = users[senderName];
+    let recipient = users[recipientName];
+
+    if (!recipient) {
+        recipient = new User(recipientName);
+        users[recipientName] = recipient;
+    }
+
+    const resultDiv = document.getElementById('result');
+
+    if (sender.transferCoins(recipient, amount)) {
+        resultDiv.textContent = `Transaction successful! ${amount} coins transferred from ${senderName} to ${recipientName}.`;
+    } else {
+        resultDiv.textContent = "Transaction failed! Insufficient balance.";
+    }
+
+    console.log(`${senderName}'s balance: ${sender.balance}`);
+    console.log(`${recipientName}'s balance: ${recipient.balance}`);
+}</script></html>
